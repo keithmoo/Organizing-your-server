@@ -1,101 +1,101 @@
-const express = require('express')
-const uuid = require('uuid/v4')
-const logger = require('../logger')
-const store = require('../store')
+const express = require('express');
+const uuid = require('uuid/v4');
+const logger = require('../logger');
+const store = require('../store');
 const validUrl = require('valid-url');
 
-const bookmarkRouter = express.Router()
-const bodyParser = express.json()
+const bookmarkRouter = express.Router();
+const bodyParser = express.json();
 
 bookmarkRouter
   .route('/bookmarks')
   .get((req, res) => {
-    res.json(store.bookmarks)
+    res.json(store.bookmarks);
   })
   .post(bodyParser, (req, res) => {
-    const {title, url, description, rating} = req.body
-    const bookmarks = { id: uuid(), title, url, description, rating }
+    const {title, url, description, rating} = req.body;
+    const bookmarks = { id: uuid(), title, url, description, rating };
 
     if(!title) {
-      logger.error(`Title is required`)
+      logger.error('Title is required');
       return res
-      .status(400)
-      .send(`Title is required`)
+        .status(400)
+        .send('Title is required');
     }
 
     if(!url) {
-      logger.error(`Url is required`)
+      logger.error('Url is required');
       return res
-      .status(400)
-      .send(`Url is required`)
+        .status(400)
+        .send('Url is required');
     }
 
     if(!description) {
-      logger.error(`Description is required`)
+      logger.error('Description is required');
       return res
-      .status(400)
-      .send(`Description is required`)
+        .status(400)
+        .send('Description is required');
     }
 
     if(!rating) {
-      logger.error(`Rating is required`)
+      logger.error('Rating is required');
       return res
-      .status(400)
-      .send(`Rating is required`)
+        .status(400)
+        .send('Rating is required');
     }
 
     if(isNaN(rating) || rating < 1 || rating > 5) {
-      logger.error(`${rating} needs to be a value between 1 and 5`)
+      logger.error(`${rating} needs to be a value between 1 and 5`);
       return res
-      .status(400)
-      .send(`${rating} needs to be a value between 1 and 5`)
+        .status(400)
+        .send(`${rating} needs to be a value between 1 and 5`);
     }
 
     if(!validUrl.isUri(url)) {
-      logger.error(`${url} provided is not a valid URL`)
+      logger.error(`${url} provided is not a valid URL`);
       return res
-      .status(400)
-      .send(`${url} provided is not a valid URL`)
+        .status(400)
+        .send(`${url} provided is not a valid URL`);
     }
 
-    store.bookmarks.push(bookmarks)
+    store.bookmarks.push(bookmarks);
 
-    logger.info(`Bookmark with Bookmark ID:${bookmarks.id} created`)
+    logger.info(`Bookmark with Bookmark ID:${bookmarks.id} created`);
     res
-    .status(201)
-    .location(`http://localhost:8000/bookmarks/${bookmarks.id}`)
-    .json(bookmarks)
+      .status(201)
+      .location(`http://localhost:8000/bookmarks/${bookmarks.id}`)
+      .json(bookmarks);
 
-    })
+  });
 
 
-    bookmarkRouter
-        .route('/bookmarks/:id')
-        .get((req, res) => {
-            const { id } = req.params;
+bookmarkRouter
+  .route('/bookmarks/:id')
+  .get((req, res) => {
+    const { id } = req.params;
         
-            const bookmark = store.bookmarks.find(u => u.id === id);
+    const bookmark = store.bookmarks.find(u => u.id === id);
         
-            if(!bookmark) {
-                logger.error(`whoa, id ${id} not found!`)
-                return res.status(404).send('sorry bud, no luck finding anything')
-            }
-            res.status(200).json(bookmark)
-        })
-        .delete((req, res) => {
-        const { id } = req.params;
+    if(!bookmark) {
+      logger.error(`ID ${id} not found`);
+      return res.status(404).send('Not Found');
+    }
+    res.status(200).json(bookmark);
+  })
+  .delete((req, res) => {
+    const { id } = req.params;
     
-        const bookmarkIndex = store.bookmarks.findIndex(u => u.id === id);
+    const bookmarkIndex = store.bookmarks.findIndex(u => u.id === id);
     
-        if (bookmarkIndex === -1) {
-            logger.error(`Eep! No way to delete what is not found! ${id}!`)
-            return res.status(404).send('404 bud, nothin good')
-        }
+    if (bookmarkIndex === -1) {
+      logger.error(`${id} not found`);
+      return res.status(404).send('404 Not Found');
+    }
     
-        store.bookmarks.splice(bookmarkIndex, 1);
+    store.bookmarks.splice(bookmarkIndex, 1);
         
-        logger.info(`id ${id} deleted successfully!`)
-        res.status(204).end();
-    })
+    logger.info(`id ${id} deleted successfully!`);
+    res.status(204).end();
+  });
 
-module.exports = bookmarkRouter
+module.exports = bookmarkRouter;

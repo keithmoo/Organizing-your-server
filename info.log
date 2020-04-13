@@ -33,3 +33,39 @@
 {"message":"bookmarks is not defined","level":"error"}
 {"message":"id 94c5f890-71e1-11ea-bc55-0242ac130003 deleted successfully!","level":"info"}
 {"message":"bookmarks is not defined","level":"error"}
+{"message":"ID doesnt-exist not found","level":"error"}
+{"message":"id 787ab247-f751-4e21-b455-59546310f50d deleted successfully!","level":"info"}
+{"message":"doesnt-exist not found","level":"error"}
+{"message":"Title is required","level":"error"}
+{"message":"Url is required","level":"error"}
+{"message":"Description is required","level":"error"}
+{"message":"Description is required","level":"error"}
+{"message":"Description is required","level":"error"}
+{"message":"Bookmark with Bookmark ID:6dbfadee-9636-49ea-b2d9-3a812acacde1 created","level":"info"}
+{"message":"ID doesnt-exist not found","level":"error"}
+{"message":"id 7f10d384-8949-4aa1-8f35-4904c3aecd89 deleted successfully!","level":"info"}
+{"message":"doesnt-exist not found","level":"error"}
+{"message":"Title is required","level":"error"}
+{"message":"Url is required","level":"error"}
+{"message":"Description is required","level":"error"}
+{"message":"Description is required","level":"error"}
+{"message":"Description is required","level":"error"}
+{"message":"Bookmark with Bookmark ID:864462cb-64ce-4e36-9934-a8d471653df9 created","level":"info"}
+{"message":"ID doesnt-exist not found","level":"error"}
+{"message":"id 1fdefb3c-8806-4793-a19c-cf9c1086f839 deleted successfully!","level":"info"}
+{"message":"doesnt-exist not found","level":"error"}
+{"message":"Title is required","level":"error"}
+{"message":"Url is required","level":"error"}
+{"message":"Description is required","level":"error"}
+{"message":"Description is required","level":"error"}
+{"message":"Description is required","level":"error"}
+{"message":"Bookmark with Bookmark ID:58f89572-eeae-4e7f-b1d0-adba6ccf68f1 created","level":"info"}
+{"message":"ID doesnt-exist not found","level":"error"}
+{"message":"id 4f037ebd-fd67-4147-8bcb-289036a3c901 deleted successfully!","level":"info"}
+{"message":"doesnt-exist not found","level":"error"}
+{"message":"Title is required","level":"error"}
+{"message":"Url is required","level":"error"}
+{"message":"Description is required","level":"error"}
+{"message":"Description is required","level":"error"}
+{"message":"Description is required","level":"error"}
+{"message":"Bookmark with Bookmark ID:e692eb30-1932-4518-85bc-1cd75a3ce4b1 created","level":"info"}
